@@ -12,10 +12,8 @@ public class Duende extends Pieza {
         super(x, y, color);
     }
 
-    
-
     @Override
-    public void Movimiento(int x, int y, byte jugador , String[][] tablero) {
+    public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
         boolean valido = false;
         try {
             validar(x, y, tablero);
@@ -31,10 +29,12 @@ public class Duende extends Pieza {
                 }
 
             }
-            if(!valido){
+            if (!valido) {
                 System.out.println("Movimiento no valido");
             }
-            
+            tablero[y][x] = tablero[this.y][this.x];
+            tablero[this.y][this.x] = "  ";
+
         } catch (MiExcepcion e) {
             System.out.println(e.getMessage());
         }
@@ -59,7 +59,5 @@ public class Duende extends Pieza {
             return "DO";
         }
     }
-
-   
 
 }

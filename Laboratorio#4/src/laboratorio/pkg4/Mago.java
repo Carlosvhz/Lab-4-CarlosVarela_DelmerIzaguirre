@@ -20,21 +20,19 @@ public class Mago extends Pieza {
     public Mago(int x, int y, Color color) {
         super(x, y, color);
     }
-    
-    
 
     @Override
     public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
-        
+
         boolean valido = false;
-        
+
         try {
-            validar(x,y,tablero);
+            validar(x, y, tablero);
             if (super.x == x) {
-                super.y = y; 
+                super.y = y;
                 valido = true;
             }
-            if (super.y == y ) {
+            if (super.y == y) {
                 super.x = x;
                 valido = true;
             }
@@ -42,17 +40,18 @@ public class Mago extends Pieza {
             int z = super.y - y;
             w = (int) Math.abs(w);
             z = (int) Math.abs(z);
-            
-            if(z == w){
+
+            if (z == w) {
                 super.x = x;
                 super.y = y;
                 valido = true;
             }
-            
-            if(!valido){
+
+            if (!valido) {
                 System.out.println("Movimiento no valido");
             }
-            
+            tablero[y][x] = tablero[this.y][this.x];
+            tablero[this.y][this.x] = "  ";
 
         } catch (MiExcepcion e) {
             System.out.println(e.getMessage());

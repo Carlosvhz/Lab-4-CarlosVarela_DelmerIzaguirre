@@ -20,13 +20,12 @@ public class Arquero extends Pieza {
     public Arquero(int x, int y, Color color) {
         super(x, y, color);
     }
-    
-    
+
     @Override
     public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
 
         boolean valido = false;
-        
+
         try {
             validar(x, y, tablero);
             if (super.x == x) {
@@ -48,10 +47,11 @@ public class Arquero extends Pieza {
                 valido = true;
 
             }
-            if(!valido){
+            if (!valido) {
                 System.out.println("Movimiento no valido");
             }
-            
+            tablero[y][x] = tablero[this.y][this.x];
+            tablero[this.y][this.x] = "  ";
 
         } catch (MiExcepcion e) {
             System.out.println(e.getMessage());
