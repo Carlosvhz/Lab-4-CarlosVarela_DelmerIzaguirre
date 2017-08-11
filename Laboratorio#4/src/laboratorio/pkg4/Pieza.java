@@ -20,6 +20,7 @@ public abstract class Pieza {
     public Pieza(int x, int y,Color color) {
         this.x = x;
         this.y = y;
+        this.color = color;
     }
 
     public void setPieza(int x, int y) {
