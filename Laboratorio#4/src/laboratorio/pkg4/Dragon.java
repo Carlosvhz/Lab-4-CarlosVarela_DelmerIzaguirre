@@ -60,7 +60,7 @@ public class Dragon extends Pieza{
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "F⚫";
+            return "F•";
         } else {
             return "FO";
         }

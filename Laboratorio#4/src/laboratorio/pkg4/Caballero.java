@@ -62,7 +62,7 @@ public class Caballero extends Pieza {
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "C⚫";
+            return "C•";
         } else {
             return "CO";
         }

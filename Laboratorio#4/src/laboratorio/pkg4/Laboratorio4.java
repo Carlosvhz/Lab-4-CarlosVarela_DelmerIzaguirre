@@ -12,12 +12,13 @@ public class Laboratorio4 {
     static Color color;
     
     public static void main(String[] args) {
-        System.out.println("•○");
-        int opcion;
+        int opcion = 4;
         jugadores.add(new Jugador(Color.white));
         jugadores.add(new Jugador(Color.black));
+        jugadores.get(0).setNombre("1");
+        jugadores.get(1).setNombre("2");
         tablero = llenar_asignar(tablero);
-        print(tablero);
+        menu(opcion);
         System.out.println(" === Lab#4 ===");
         do {
             System.out.print("1. Ingrese Jugador\n"
@@ -100,7 +101,10 @@ public class Laboratorio4 {
     
     public static void jugar(){
         int x, y;
-        while (true) {            
+        while (true) {     
+            System.out.println("====================================================");
+            print(tablero);
+            System.out.println("====================================================");
             int cont = 0;
             if (cont%2==0) {
                 System.out.print("--- Turno jugador: "+jugadores.get(0).getNombre()+" ---\n"
@@ -111,14 +115,49 @@ public class Laboratorio4 {
                 y = sc.nextInt();
                 char simbolo = tablero[y][x].charAt(1);
                 char simbolo2; 
-                if (jugadores.get(0).) {
-                    
+                if (jugadores.get(0).getColor().equals(Color.black)) {
+                    simbolo2 = '•'; 
+                }else{
+                    simbolo2 = 'O'; 
                 }
-                if (tablero[y][x]) {
-                    
+                if (simbolo==simbolo2) {
+                    for (Pieza pz : jugadores.get(0).getPiezas()) {
+                        if(pz.x==x&&pz.y==y){
+                            System.out.print("- Ingrese nueva posicion x: ");
+                            x = sc.nextInt();
+                            System.out.print("- Ingrese nueva posicion y: ");
+                            y = sc.nextInt();
+                            pz.Movimiento(x, y, (byte)0, tablero);
+                            break;
+                        }
+                    }
                 }
             }else{
-                System.out.println("--- Turno jugador: "+jugadores.get(1).getNombre()+" ---");
+                System.out.print("--- Turno jugador: "+jugadores.get(1).getNombre()+" ---\n"
+                        + "... Posicion de la pieza\n"
+                        + "Ingrese x: ");
+                x = sc.nextInt();
+                System.out.print("Ingrese y: ");
+                y = sc.nextInt();
+                char simbolo = tablero[y][x].charAt(1);
+                char simbolo2; 
+                if (jugadores.get(1).getColor().equals(Color.black)) {
+                    simbolo2 = '•'; 
+                }else{
+                    simbolo2 = 'O'; 
+                }
+                if (simbolo==simbolo2) {
+                    for (Pieza pz : jugadores.get(1).getPiezas()) {
+                        if(pz.x==x&&pz.y==y){
+                            System.out.print("- Ingrese nueva posicion x: ");
+                            x = sc.nextInt();
+                            System.out.print("- Ingrese nueva posicion y: ");
+                            y = sc.nextInt();
+                            pz.Movimiento(x, y, (byte)0, tablero);
+                            break;
+                        }
+                    }
+                }
             }
             cont++;
         }

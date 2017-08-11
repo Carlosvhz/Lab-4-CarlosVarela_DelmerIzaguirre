@@ -73,7 +73,7 @@ public class Mago extends Pieza {
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "M⚫";
+            return "M•";
         } else {
             return "MO";
         }
