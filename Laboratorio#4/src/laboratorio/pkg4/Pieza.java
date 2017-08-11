@@ -83,8 +83,6 @@ public abstract class Pieza {
 
             }
             if (posible) {
-                tablero[y][x] = tablero[this.y][this.x];
-                tablero[this.y][this.x] = "  ";
                
             } else {
                 throw new MiExcepcion("No puedes mover esta pieza aqui");
@@ -105,8 +103,7 @@ public abstract class Pieza {
                 }
             }
             if (posible) {
-                tablero[y][x] = tablero[this.y][this.x];
-                tablero[this.y][this.x] = "  ";
+              
             } else {
                 throw new MiExcepcion("No puedes mover esta pieza aqui");
             }

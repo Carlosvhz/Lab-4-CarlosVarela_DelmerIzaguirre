@@ -11,7 +11,7 @@ import java.awt.Color;
  *
  * @author Owner
  */
-public class Dragon extends Pieza{
+public class Dragon extends Pieza {
 
     public Dragon() {
         super();
@@ -20,26 +20,28 @@ public class Dragon extends Pieza{
     public Dragon(int x, int y, Color color) {
         super(x, y, color);
     }
-        
+
     @Override
     public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
         boolean valido = false;
         try {
-            validar(x,y, tablero);
-           
+            validar(x, y, tablero);
+
             int w = super.x - x;
             int z = super.y - y;
             w = (int) Math.sqrt(Math.pow(w, 2));
             z = (int) Math.sqrt(Math.pow(z, 2));
-            
-            if(z == w){
+
+            if (z == w) {
                 super.x = x;
                 super.y = y;
                 valido = true;
             }
-            if(!valido){
+            if (!valido) {
                 System.out.println("Movimiento no valido");
             }
+            tablero[y][x] = tablero[this.y][this.x];
+            tablero[this.y][this.x] = "  ";
 
         } catch (MiExcepcion e) {
             System.out.println(e.getMessage());
