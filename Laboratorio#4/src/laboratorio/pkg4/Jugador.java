@@ -14,6 +14,9 @@ public class Jugador {
     public Jugador() {
     }
 
+    public Jugador (Color color){
+        this.color = color;
+    }
     public Jugador(String nombre, String nombre_usuario, String sexo, String lugar_nacimiento, int puntos, int edad, Color color) {
         this.nombre = nombre;
         this.nombre_usuario = nombre_usuario;
