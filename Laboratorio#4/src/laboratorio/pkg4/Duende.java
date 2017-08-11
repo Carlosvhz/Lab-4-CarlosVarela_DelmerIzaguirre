@@ -8,6 +8,10 @@ public class Duende extends Pieza {
         super();
     }
 
+    public Duende(int x, int y) {
+        super(x, y);
+    }
+
     @Override
     public void Movimiento(int x, int y, byte jugador) {
         boolean valido = false;
