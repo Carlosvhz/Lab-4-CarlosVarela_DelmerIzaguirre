@@ -102,110 +102,93 @@ public class Laboratorio4 {
 
     public static void jugar() {
         int x, y;
+
         while (true) {
             print(tablero);
             int cont = 1;
             if (cont % 2 == 0) {
-                System.out.print("--- Turno jugador: " + jugadores.get(0).getNombre() + " ---\n"
-                        + "... Posicion de la pieza\n"
-                        + "Ingrese x: ");
-                x = sc.nextInt();
-                System.out.print("Ingrese y: ");
-                y = sc.nextInt();
-                try {
-                    char simbolo = tablero[y][x].charAt(1);
-                    char simbolo2;
-                    if (jugadores.get(0).getColor().equals(Color.black)) {
-                        simbolo2 = '•';
-                    } else {
-                        simbolo2 = 'O';
-                    }
-                    if (simbolo == simbolo2) {
-                        for (Pieza pz : jugadores.get(0).getPiezas()) {
-                            if (pz.x == x && pz.y == y) {
-                                System.out.print("- Ingrese nueva posicion x: ");
-                                x = sc.nextInt();
-                                System.out.print("- Ingrese nueva posicion y: ");
-                                y = sc.nextInt();
-                                pz.Movimiento(x, y, (byte) 0, tablero);
-                                break;
+                System.out.print("--- Turno jugador: " + jugadores.get(0).getNombre() + " ---\n");
+                while (true) {
+                    System.out.println("====================================================");
+                    print(tablero);
+                    System.out.println("====================================================");
+
+                    if (cont % 2 == 0) {
+                        System.out.print("--- Turno jugador: " + jugadores.get(0).getNombre() + " ---\n"
+                                + "... Posicion de la pieza\n"
+                                + "Ingrese x: ");
+                        x = sc.nextInt();
+                        System.out.print("Ingrese y: ");
+                        y = sc.nextInt();
+                        try {
+                            char simbolo = tablero[y][x].charAt(1);
+                            char simbolo2;
+                            if (jugadores.get(0).getColor().equals(Color.black)) {
+                                simbolo2 = '•';
+                            } else {
+                                simbolo2 = 'O';
                             }
+                            if (simbolo == simbolo2) {
+                                for (Pieza pz : jugadores.get(0).getPiezas()) {
+                                    if (pz.x == x && pz.y == y) {
+                                        System.out.print("- Ingrese nueva posicion x: ");
+                                        x = sc.nextInt();
+                                        System.out.print("- Ingrese nueva posicion y: ");
+                                        y = sc.nextInt();
+                                        pz.Movimiento(x, y, (byte) 0, tablero);
+                                        break;
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                        }
+
+                    } else {
+                        System.out.print("--- Turno jugador: " + jugadores.get(1).getNombre() + " ---\n"
+                                + "... Posicion de la pieza\n"
+                                + "Ingrese x: ");
+                        x = sc.nextInt();
+                        System.out.print("Ingrese y: ");
+                        y = sc.nextInt();
+                        char simbolo = tablero[y][x].charAt(1);
+                        char simbolo2;
+                        if (jugadores.get(1).getColor().equals(Color.black)) {
+                            simbolo2 = '•';
+                        } else {
+                            simbolo2 = 'O';
+                        }
+                        if (simbolo == simbolo2) {
+                            for (Pieza pz : jugadores.get(1).getPiezas()) {
+                                if (pz.x == x && pz.y == y) {
+                                    System.out.print("- Ingrese nueva posicion x: ");
+                                    x = sc.nextInt();
+                                    System.out.print("- Ingrese nueva posicion y: ");
+                                    y = sc.nextInt();
+                                    pz.Movimiento(x, y, (byte) 0, tablero);
+                                    break;
+                                }
+
+                            }
+                            cont++;
                         }
                     }
-                } catch (Exception e) {
                 }
-
-            } else {
-                System.out.print("--- Turno jugador: " + jugadores.get(1).getNombre() + " ---\n"
-                        + "... Posicion de la pieza\n"
-                        + "Ingrese x: ");
-                x = sc.nextInt();
-                System.out.print("Ingrese y: ");
-                y = sc.nextInt();
-                try {
-                    char simbolo = tablero[y][x].charAt(1);
-                    char simbolo2;
-                    if (jugadores.get(1).getColor().equals(Color.black)) {
-                        simbolo2 = '•';
-                    } else {
-                        simbolo2 = 'O';
-                    }
-                    if (simbolo == simbolo2) {
-                        for (Pieza pz : jugadores.get(1).getPiezas()) {
-                            if (pz.x == x && pz.y == y) {
-                                System.out.print("- Ingrese nueva posicion x: ");
-                                x = sc.nextInt();
-                                System.out.print("- Ingrese nueva posicion y: ");
-                                y = sc.nextInt();
-                                pz.Movimiento(x, y, (byte) 0, tablero);
-                                break;
-                            }
-                char simbolo = tablero[y][x].charAt(1);
-                char simbolo2; 
-                if (jugadores.get(1).getColor().equals(Color.black)) {
-                    simbolo2 = '•'; 
-                }else{
-                    simbolo2 = 'O'; 
-                }
-                if (simbolo==simbolo2) {
-                    for (Pieza pz : jugadores.get(1).getPiezas()) {
-                        if(pz.x==x&&pz.y==y){
-                            System.out.print("- Ingrese nueva posicion x: ");
-                            x = sc.nextInt();
-                            System.out.print("- Ingrese nueva posicion y: ");
-                            y = sc.nextInt();
-                            pz.Movimiento(x, y, (byte)1, tablero);
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                }
-
-            }
-            cont++;
-        }
-    }
-
-    public static void modificar() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-
             }
         }
     }
-
     //Imprimir matriz
+
     public static void print(String[][] matriz) {
-        int cont=0;
+        int cont = 0;
         System.out.println("====================================================");
         for (int i = 0; i < 10; i++) {
-            System.out.print("   "+i+".");
+            System.out.print("   " + i + ".");
         }
         System.out.println();
         for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) { 
-                if (j==0) {
-                    System.out.print(cont+".- ");
+            for (int j = 0; j < 10; j++) {
+                if (j == 0) {
+                    System.out.print(cont + ".- ");
                 }
                 System.out.print(" " + matriz[i][j] + " |");
             }
