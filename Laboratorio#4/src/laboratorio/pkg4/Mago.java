@@ -16,16 +16,39 @@ public class Mago extends Pieza {
     public Mago() {
         super();
     }
-   
+
     @Override
     public void Movimiento(int x, int y, byte jugador) {
-        if (super.x == x) {
-            
-        }
-        if (super.y - y == 1 || super.y - y == 1) {
-            if(super.x == x){
-                super.y = y;
+        
+        boolean valido = false;
+        
+        try {
+            validar(x,y);
+            if (super.x == x) {
+                super.y = y; 
+                valido = true;
             }
+            if (super.y == y ) {
+                super.x = x;
+                valido = true;
+            }
+            int w = super.x - x;
+            int z = super.y - y;
+            w = (int) Math.sqrt(Math.pow(w, 2));
+            z = (int) Math.sqrt(Math.pow(z, 2));
+            
+            if(z == w){
+                super.x = x;
+                super.y = y;
+                valido = true;
+            }
+            
+            if(!valido){
+                System.out.println("Movimiento no valido");
+            }
+            
+
+        } catch (MiExcepcion e) {
         }
 
     }
@@ -48,4 +71,5 @@ public class Mago extends Pieza {
             return "MO";
         }
     }
+
 }
