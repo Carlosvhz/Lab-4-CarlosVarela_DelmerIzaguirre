@@ -17,6 +17,12 @@ public class Rey extends Pieza {
         super();
     }
 
+    public Rey(int x, int y) {
+        super(x, y);
+    }
+    
+    
+
     @Override
     public void Movimiento(int x, int y, byte jugador) {
         
