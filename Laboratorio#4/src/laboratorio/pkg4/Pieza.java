@@ -16,7 +16,12 @@ public abstract class Pieza {
     public Pieza() {
     }
 
-    public void setPieza(int y,int x){
+    public Pieza(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setPieza(int x,int y){
         this.x = x;
         this.y = y;
         
