@@ -10,6 +10,8 @@ import java.awt.Color;
 public abstract class Pieza {
     private Color color;
     private String material;
+    protected int x;
+    protected int y;
 
     public Pieza() {
     }
@@ -40,5 +42,9 @@ public abstract class Pieza {
         return "Pieza{" + "color=" + color + ", material=" + material + '}';
     }
     
+    //Metodos
+    public abstract void Movimiento(int x, int y, byte jugador);
+    public abstract void Captura();
+    public abstract String getFigura();
     
 }

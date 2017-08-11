@@ -8,7 +8,7 @@ public class Jugador {
     
     private String nombre, nombre_usuario, sexo, lugar_nacimiento;
     private int puntos, edad;
-    private ArrayList<Pieza> = new ArrayList();
+    private ArrayList<Pieza> piezas = new ArrayList();
     
     public Jugador() {
     }
