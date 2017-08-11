@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.*;
 
 public class Laboratorio4 {
-//•○
     static Scanner sc = new Scanner(System.in);
     static String palabra, nombre, lugar, sexo;
     static int edad, op, c;
@@ -13,6 +12,7 @@ public class Laboratorio4 {
     static Color color;
     
     public static void main(String[] args) {
+        System.out.println("•○");
         int opcion;
         jugadores.add(new Jugador(Color.white));
         jugadores.add(new Jugador(Color.black));
