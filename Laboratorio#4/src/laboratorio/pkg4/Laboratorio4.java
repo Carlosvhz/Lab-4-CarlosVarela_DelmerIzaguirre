@@ -7,13 +7,15 @@ public class Laboratorio4 {
     static Scanner sc = new Scanner(System.in);
     static String palabra, nombre, lugar, sexo;
     static int edad, op;
+    static String [][] tablero = new String [10][10];
     static ArrayList<Jugador> jugadores = new ArrayList();
     
     
     public static void main(String[] args) {
         int opcion;
+        tablero = llenar_asignar(tablero);
+        print(tablero);
         System.out.println(" === Lab#4 ===");
-        
         do {
             System.out.print("1. Ingrese Jugador\n"
                     + "2. Eliminar Jugador\n"
@@ -61,6 +63,13 @@ public class Laboratorio4 {
                 break;
             case 3:
                 System.out.println("_____  Listar jugadores ____");
+                if (jugadores.size()==0) {
+                    System.out.println("... No hay jugadores para listar!!\n");
+                }else{
+                    for (Jugador n : jugadores) {
+                        System.out.println(n);
+                    }
+                }
                 break;
             case 4:
                 break;
@@ -70,8 +79,15 @@ public class Laboratorio4 {
         }
     }
     
+    public static void modificar(){
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                
+            }
+        }
+    }
     //Imprimir matriz
-    public static void print(String[][] matriz, int f, int c){
+    public static void print(String[][] matriz){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 System.out.print("| "+matriz[i][j]+" |");
@@ -87,6 +103,7 @@ public class Laboratorio4 {
                 if (i==1) {
                     if (j==0||j==matriz.length-1) {
                         //Asignar D
+                        jugadores.get(0).setPiezas(new Duende());
                         matriz[i][j] = "D";
                     }else if (j==2||j==7) {
                         //Asignar A

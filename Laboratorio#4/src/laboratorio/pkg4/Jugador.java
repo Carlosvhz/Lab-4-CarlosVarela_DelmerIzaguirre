@@ -70,6 +70,15 @@ public class Jugador {
         this.edad = edad;
     }
 
+    public ArrayList<Pieza> getPiezas() {
+        return piezas;
+    }
+
+    public void setPiezas(Pieza piezas) {
+        this.piezas.add(piezas);
+    }
+
+    
     @Override
     public String toString() {
         return "Jugador: "+ nombre + "\n"
