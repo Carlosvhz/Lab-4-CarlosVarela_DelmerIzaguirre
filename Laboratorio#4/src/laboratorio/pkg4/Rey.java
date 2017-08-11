@@ -24,7 +24,7 @@ public class Rey extends Pieza {
     
 
     @Override
-    public void Movimiento(int x, int y, byte jugador) {
+    public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
         
         System.out.println("El rey no se puede mover");
 
