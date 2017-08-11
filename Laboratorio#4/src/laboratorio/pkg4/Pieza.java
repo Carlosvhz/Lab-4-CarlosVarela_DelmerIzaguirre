@@ -50,7 +50,7 @@ public abstract class Pieza {
 
     @Override
     public String toString() {
-        return "Pieza{" + "color=" + color + ", material=" + material + '}';
+        return "x: "+x +" y: "+y;
     }
 
     //Metodos
