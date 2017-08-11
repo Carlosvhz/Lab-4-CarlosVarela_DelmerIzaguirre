@@ -10,17 +10,18 @@ public class Jugador {
     private String nombre, nombre_usuario, sexo, lugar_nacimiento;
     private int puntos, edad;
     private ArrayList<Pieza> piezas = new ArrayList();
-    
+    private Color color;
     public Jugador() {
     }
 
-    public Jugador(String nombre, String nombre_usuario, String sexo, String lugar_nacimiento, int puntos, int edad) {
+    public Jugador(String nombre, String nombre_usuario, String sexo, String lugar_nacimiento, int puntos, int edad, Color color) {
         this.nombre = nombre;
         this.nombre_usuario = nombre_usuario;
         this.sexo = sexo;
         this.lugar_nacimiento = lugar_nacimiento;
         this.puntos = puntos;
         this.edad = edad;
+        this.color = color;
     }
 
     public String getNombre() {
@@ -78,6 +79,16 @@ public class Jugador {
     public void setPiezas(Pieza piezas) {
         this.piezas.add(piezas);
     }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
+    
     
     @Override
     public String toString() {

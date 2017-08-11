@@ -47,7 +47,17 @@ public class Laboratorio4 {
                     edad = sc.nextInt();
                     System.out.print("Ingrese sexo: ");
                     sexo = sc.next();
-                    jugadores.add(new Jugador(nombre, palabra, sexo, lugar, 0, edad));
+                    System.out.print("... Ingrese color\n"
+                            + "1. Blanco\n"
+                            + "2. Negro\n"
+                            + "Ingrese: ");
+                    c = sc.nextInt();
+                    if (c==1) {
+                        color = Color.white;
+                    }else{
+                        color = Color.black;
+                    }
+                    jugadores.add(new Jugador(nombre, palabra, sexo, lugar, 0, edad, color));
                 }
                 System.out.println("... Jugador añadido!!\n");
                 break;
@@ -74,10 +84,41 @@ public class Laboratorio4 {
                 System.out.println();
                 break;
             case 4:
+                if (jugadores.size()==2) {
+                    jugar();
+                }else{
+                    System.out.println("... No hay jugadores sifucientes para jugar!!!\n ");
+                }
                 break;
             default:
                 System.out.println("... Gracias por su uso!");
                 break;
+        }
+    }
+    
+    public static void jugar(){
+        int x, y;
+        while (true) {            
+            int cont = 0;
+            if (cont%2==0) {
+                System.out.print("--- Turno jugador: "+jugadores.get(0).getNombre()+" ---\n"
+                        + "... Posicion de la pieza\n"
+                        + "Ingrese x: ");
+                x = sc.nextInt();
+                System.out.print("Ingrese y: ");
+                y = sc.nextInt();
+                char simbolo = tablero[y][x].charAt(1);
+                char simbolo2; 
+                if (jugadores.get(0).) {
+                    
+                }
+                if (tablero[y][x]) {
+                    
+                }
+            }else{
+                System.out.println("--- Turno jugador: "+jugadores.get(1).getNombre()+" ---");
+            }
+            cont++;
         }
     }
     
@@ -100,83 +141,104 @@ public class Laboratorio4 {
     }
     
     public static String [][] llenar_asignar(String[][]matriz){
+        Pieza pieza;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 //Player 1
                 if (i==1) {
                     if (j==0||j==matriz.length-1) {
-                        jugadores.get(0).setPiezas(new Duende(j, i));
-                        matriz[i][j] = "D";
+                        pieza = new Duende(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==2||j==7) {
-                        jugadores.get(0).setPiezas(new Arquero(j, i));
-                        matriz[i][j] = "A";
+                        pieza = new Arquero(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==3||j==6) {
-                        jugadores.get(0).setPiezas(new Duende(j,i));
-                        matriz[i][j] = "D";
+                        pieza = new Duende(j,i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==4) {
-                        jugadores.get(0).setPiezas(new Caballero(j, i));
-                        matriz[i][j] = "C";
+                        pieza =new Caballero(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if(j==5){
-                        jugadores.get(0).setPiezas(new Dragon(j, i));
-                        matriz[i][j] = "F";
+                        pieza = new Dragon(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else{
                         matriz[i][j] = "  ";
                     }
                 }else if(i==0){
                     if (j==0||j==matriz.length-1) {
-                        jugadores.get(0).setPiezas(new Caballero(j, i));
-                        matriz[i][j] = "C";
+                        pieza = new Caballero(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==2||j==7) {
-                        jugadores.get(0).setPiezas(new Dragon(j, i));
-                        matriz[i][j] = "F";
+                        pieza = new Dragon(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==3||j==6) {
-                        jugadores.get(0).setPiezas(new Arquero(j, i));
-                        matriz[i][j] = "A";
+                        pieza = new Arquero(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==4) {
-                        jugadores.get(0).setPiezas(new Rey(j, i));
-                        matriz[i][j] = "R";
+                        pieza = new Rey(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if(j==5){
-                        jugadores.get(0).setPiezas(new Mago(j, i));
-                        matriz[i][j] = "M";
+                        pieza = new Mago(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else{
                         matriz[i][j] = "  ";
                     }
                     //Segundo jugador
                 }else if (i==8){
                     if (j==0||j==matriz.length-1) {
-                        jugadores.get(1).setPiezas(new Duende(j,i));
-                        matriz[i][j] = "D";
+                        pieza = new Duende(j,i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas(pieza);
+                        matriz[i][j]= pieza.getFigura();
                     }else if (j==2||j==7) {
-                        jugadores.get(1).setPiezas(new Arquero(j, i));
-                        matriz[i][j] = "A";
+                        pieza = new Arquero(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas();
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==3||j==6) {
-                        jugadores.get(1).setPiezas(new Duende(j,i));
-                        matriz[i][j] = "D";
+                        pieza = new Duende(j,i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas();
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==4) {
-                        jugadores.get(1).setPiezas(new Dragon(j, i));
-                        matriz[i][j] = "F";
+                        pieza = new Dragon(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas();
+                        matriz[i][j] = pieza.getFigura();
                     }else if(j==5){
-                        jugadores.get(1).setPiezas(new Caballero(j, i));
-                        matriz[i][j] = "C";
+                        pieza = new Caballero(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas();
+                        matriz[i][j] = pieza.getFigura();
                     }else{
                         matriz[i][j] = "  ";
                     }
                 }else if(i==9){
                     if (j==0||j==matriz.length-1) {
-                        jugadores.get(1).setPiezas(new Caballero(j, i));
-                        matriz[i][j] = "C";
+                        pieza = new Caballero(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas();
+                        matriz[i][j] = pieza.getFigura(pieza);
                     }else if (j==2||j==7) {
-                        jugadores.get(1).setPiezas(new Dragon(j, i));
-                        matriz[i][j] = "F";
+                        pieza = new Dragon(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas();
+                        matriz[i][j] = pieza.getFigura(pieza);
                     }else if (j==3||j==6) {
-                        jugadores.get(1).setPiezas(new Arquero(j, i));
-                        matriz[i][j] = "A";
+                        pieza = new Arquero(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==4) {
-                        jugadores.get(1).setPiezas(new Rey(j, i));
-                        matriz[i][j] = "R";
+                        pieza = new Rey(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else if(j==5){
-                        jugadores.get(1).setPiezas(new Mago(j, i));
-                        matriz[i][j] = "M";
+                        pieza = new Mago(j, i, jugadores.get(1).getColor());
+                        jugadores.get(1).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
                     }else{
                         matriz[i][j] = "  ";
                     }
