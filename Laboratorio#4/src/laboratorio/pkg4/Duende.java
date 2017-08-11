@@ -13,10 +13,10 @@ public class Duende extends Pieza {
     }
 
     @Override
-    public void Movimiento(int x, int y, byte jugador) {
+    public void Movimiento(int x, int y, byte jugador , String[][] tablero) {
         boolean valido = false;
         try {
-            validar(x, y);
+            validar(x, y, tablero);
             if (jugador == 0) {
                 if (x == super.x && y - super.y == 1) {
                     super.x = x;

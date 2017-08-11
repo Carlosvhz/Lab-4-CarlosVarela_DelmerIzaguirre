@@ -1,6 +1,7 @@
 package laboratorio.pkg4;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,12 +22,12 @@ public abstract class Pieza {
         this.y = y;
     }
 
-    public void setPieza(int x,int y){
+    public void setPieza(int x, int y) {
         this.x = x;
         this.y = y;
-        
+
     }
-    
+
     public Pieza(Color color, String material) {
         this.color = color;
         this.material = material;
@@ -54,23 +55,63 @@ public abstract class Pieza {
     }
 
     //Metodos
-    public abstract void Movimiento(int x, int y, byte jugador);
+    public abstract void Movimiento(int x, int y, byte jugador, String[][] tablero);
 
     public abstract void Captura();
 
     public abstract String getFigura();
 
-    protected void validar(int x, int y) throws MiExcepcion {
+    protected void validar(int x, int y, String[][] tablero) throws MiExcepcion {
         if (x > 9 || x < 0 || y > 9 || y < 0) {
             throw new MiExcepcion("La posicion de estar en un rango de 0-9");
         }
+        boolean posible = true;
+        if (this.x == x) { //Movimiento horizontal
+            if (y > this.y) {
+                for (int i = y-1; i > this.y; i--) {
+                    if (!"  ".equals(tablero[x][i])) {
+                        posible = false;
+                    }
+                }
+            } else {
+                for (int i = y+1; i < this.y; i++) {
+                    if (!"  ".equals(tablero[x][i])) {
+                        posible = false;
+                    }
+                }
 
-    }
-    
-    protected void validar2(int x,int y, String[][] tablero){
-        System.out.println("Hola");
-        
-        
+            }
+            if (posible) {
+                tablero[y][x] = tablero[this.y][this.x];
+                tablero[this.y][this.x] = "  ";
+               
+            } else {
+                throw new MiExcepcion("No puedes mover esta pieza aqui");
+            }
+
+        } else if (this.y == y) { //Movimiento Vertical
+            if (x > this.x) {
+                for (int i = x; i > this.x; i--) {
+                    if (!"  ".equals(tablero[i][y])) {
+                        posible = false;
+                    }
+                }
+            } else {
+                for (int i = x; i < this.x; i++) {
+                    if (!"  ".equals(tablero[i][y])) {
+                        posible = false;
+                    }
+                }
+            }
+            if (posible) {
+                tablero[y][x] = tablero[this.y][this.x];
+                tablero[this.y][this.x] = "  ";
+            } else {
+                throw new MiExcepcion("No puedes mover esta pieza aqui");
+            }
+
+        }
+
     }
 
 }

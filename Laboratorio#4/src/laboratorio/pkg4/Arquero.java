@@ -24,12 +24,12 @@ public class Arquero extends Pieza {
     
     
     @Override
-    public void Movimiento(int x, int y, byte jugador) {
+    public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
 
         boolean valido = false;
         
         try {
-            validar(x, y);
+            validar(x, y, tablero);
             if (super.x == x) {
                 super.y = y;
                 valido = true;
