@@ -160,6 +160,22 @@ public class Laboratorio4 {
                                 pz.Movimiento(x, y, (byte) 0, tablero);
                                 break;
                             }
+                char simbolo = tablero[y][x].charAt(1);
+                char simbolo2; 
+                if (jugadores.get(1).getColor().equals(Color.black)) {
+                    simbolo2 = '•'; 
+                }else{
+                    simbolo2 = 'O'; 
+                }
+                if (simbolo==simbolo2) {
+                    for (Pieza pz : jugadores.get(1).getPiezas()) {
+                        if(pz.x==x&&pz.y==y){
+                            System.out.print("- Ingrese nueva posicion x: ");
+                            x = sc.nextInt();
+                            System.out.print("- Ingrese nueva posicion y: ");
+                            y = sc.nextInt();
+                            pz.Movimiento(x, y, (byte)1, tablero);
+                            break;
                         }
                     }
                 } catch (Exception e) {
