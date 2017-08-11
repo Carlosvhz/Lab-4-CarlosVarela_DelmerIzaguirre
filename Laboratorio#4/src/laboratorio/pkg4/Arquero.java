@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package laboratorio.pkg4;
 
 import java.awt.Color;
@@ -6,35 +11,43 @@ import java.awt.Color;
  *
  * @author Owner
  */
-public class Caballero extends Pieza {
+public class Arquero extends Pieza {
 
-    public Caballero() {
+    public Arquero() {
         super();
     }
-
+    
     @Override
     public void Movimiento(int x, int y, byte jugador) {
-        
+
         boolean valido = false;
         
         try {
             validar(x, y);
-            if (super.x - x == 1 || super.x - x == -1) {
-                if (super.y == y) {
-                    super.x = x;
-                    valido = true;
-                }
+            if (super.x == x) {
+                super.y = y;
+                valido = true;
             }
-            if (super.y - y == 1 || super.y - y == -1) {
-                if (super.x == x) {
-                    super.y = y;
-                    valido = true;
-                }
+            if (super.y == y) {
+                super.x = x;
+                valido = true;
+            }
+            int w = super.x - x;
+            int z = super.y - y;
+            w = (int) Math.sqrt(Math.pow(w, 2));
+            z = (int) Math.sqrt(Math.pow(z, 2));
+
+            if (z == w) {
+                super.x = x;
+                super.y = y;
+                valido = true;
+
             }
             if(!valido){
                 System.out.println("Movimiento no valido");
             }
             
+
         } catch (MiExcepcion e) {
         }
 
@@ -47,15 +60,15 @@ public class Caballero extends Pieza {
 
     @Override
     public String toString() {
-        return "C";
+        return "A";
     }
 
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "C⚫";
+            return "A⚫";
         } else {
-            return "CO";
+            return "AO";
         }
     }
 

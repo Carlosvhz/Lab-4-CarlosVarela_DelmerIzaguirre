@@ -10,18 +10,26 @@ public class Duende extends Pieza {
 
     @Override
     public void Movimiento(int x, int y, byte jugador) {
+        boolean valido = false;
+        
         try {
             validar(x, y);
             if (jugador == 0) {
                 if (x == super.x && y - super.y == 1) {
                     super.x = x;
+                    valido = true;
                 }
             } else {
                 if (x == super.x && y - super.y == -1) {
                     super.x = x;
+                    valido = true;
                 }
 
             }
+            if(!valido){
+                System.out.println("Movimiento no valido");
+            }
+            
         } catch (MiExcepcion e) {
         }
 
