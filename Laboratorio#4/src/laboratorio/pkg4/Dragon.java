@@ -17,12 +17,10 @@ public class Dragon extends Pieza{
         super();
     }
 
-    public Dragon(int x, int y) {
-        super(x, y);
+    public Dragon(int x, int y, Color color) {
+        super(x, y, color);
     }
-    
-    
-    
+        
     @Override
     public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
         boolean valido = false;
@@ -44,6 +42,7 @@ public class Dragon extends Pieza{
             }
 
         } catch (MiExcepcion e) {
+            System.out.println(e.getMessage());
         }
 
     }

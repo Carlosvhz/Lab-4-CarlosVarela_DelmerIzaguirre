@@ -8,9 +8,11 @@ public class Duende extends Pieza {
         super();
     }
 
-    public Duende(int x, int y) {
-        super(x, y);
+    public Duende(int x, int y, Color color) {
+        super(x, y, color);
     }
+
+    
 
     @Override
     public void Movimiento(int x, int y, byte jugador , String[][] tablero) {
@@ -34,6 +36,7 @@ public class Duende extends Pieza {
             }
             
         } catch (MiExcepcion e) {
+            System.out.println(e.getMessage());
         }
 
     }

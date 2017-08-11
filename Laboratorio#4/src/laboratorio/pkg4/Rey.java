@@ -17,10 +17,9 @@ public class Rey extends Pieza {
         super();
     }
 
-    public Rey(int x, int y) {
-        super(x, y);
+    public Rey(int x, int y, Color color) {
+        super(x, y, color);
     }
-    
     
 
     @Override

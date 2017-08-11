@@ -17,7 +17,7 @@ public abstract class Pieza {
     public Pieza() {
     }
 
-    public Pieza(int x, int y) {
+    public Pieza(int x, int y,Color color) {
         this.x = x;
         this.y = y;
     }
