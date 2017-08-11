@@ -42,7 +42,7 @@ public class Rey extends Pieza {
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "R⚫";
+            return "R•";
         } else {
             return "RO";
         }

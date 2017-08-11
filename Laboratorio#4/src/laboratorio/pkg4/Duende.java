@@ -54,7 +54,7 @@ public class Duende extends Pieza {
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "D⚫";
+            return "D•";
         } else {
             return "DO";
         }

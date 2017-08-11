@@ -72,7 +72,7 @@ public class Arquero extends Pieza {
     @Override
     public String getFigura() {
         if (getColor().equals(Color.black)) {
-            return "A⚫";
+            return "A•";
         } else {
             return "AO";
         }
