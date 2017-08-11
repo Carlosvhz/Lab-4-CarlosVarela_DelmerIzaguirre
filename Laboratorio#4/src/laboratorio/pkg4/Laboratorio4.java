@@ -101,11 +101,12 @@ public class Laboratorio4 {
     
     public static void jugar(){
         int x, y;
+        int cont = 0;
         while (true) {     
             System.out.println("====================================================");
             print(tablero);
             System.out.println("====================================================");
-            int cont = 0;
+            
             if (cont%2==0) {
                 System.out.print("--- Turno jugador: "+jugadores.get(0).getNombre()+" ---\n"
                         + "... Posicion de la pieza\n"
