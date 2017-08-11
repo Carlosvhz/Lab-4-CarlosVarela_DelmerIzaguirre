@@ -14,15 +14,19 @@ public class Caballero extends Pieza {
 
     @Override
     public void Movimiento(int x, int y, byte jugador) {
-        if (super.x - x == 1 || super.x - x == 1) {
-            if(super.y == y){
-                super.x = x;
+        try {
+            validar(x, y);
+            if (super.x - x == 1 || super.x - x == 1) {
+                if (super.y == y) {
+                    super.x = x;
+                }
             }
-        }
-        if (super.y - y == 1 || super.y - y == 1) {
-            if(super.x == x){
-                super.y = y;
+            if (super.y - y == 1 || super.y - y == 1) {
+                if (super.x == x) {
+                    super.y = y;
+                }
             }
+        } catch (MiExcepcion e) {
         }
 
     }
@@ -44,13 +48,6 @@ public class Caballero extends Pieza {
         } else {
             return "CO";
         }
-    }
-    
-    private void validar(int x, int y) throws MiExcepcion{
-        if(x > 9 || x < 0 || y > 9 || y < 0){
-            throw new MiExcepcion("La posicion de estar en un rango de 0-9");
-        }
-        
     }
 
 }

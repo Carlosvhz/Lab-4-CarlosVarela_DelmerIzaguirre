@@ -10,15 +10,19 @@ public class Duende extends Pieza {
 
     @Override
     public void Movimiento(int x, int y, byte jugador) {
-        if (jugador == 0) {
-            if (x == super.x && y - super.y == 1) {
-                super.x = x;
-            }
-        } else {
-            if (x == super.x && y - super.y == -1) {
-                super.x = x;
-            }
+        try {
+            validar(x, y);
+            if (jugador == 0) {
+                if (x == super.x && y - super.y == 1) {
+                    super.x = x;
+                }
+            } else {
+                if (x == super.x && y - super.y == -1) {
+                    super.x = x;
+                }
 
+            }
+        } catch (MiExcepcion e) {
         }
 
     }
@@ -35,11 +39,13 @@ public class Duende extends Pieza {
 
     @Override
     public String getFigura() {
-        if(getColor().equals(Color.black)){
+        if (getColor().equals(Color.black)) {
             return "D⚫";
-        }else{
+        } else {
             return "DO";
         }
     }
+
+   
 
 }
