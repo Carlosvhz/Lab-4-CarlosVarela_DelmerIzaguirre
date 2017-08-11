@@ -70,6 +70,7 @@ public class Laboratorio4 {
                         System.out.println(n);
                     }
                 }
+                System.out.println();
                 break;
             case 4:
                 break;
@@ -102,8 +103,7 @@ public class Laboratorio4 {
                 //Player 1
                 if (i==1) {
                     if (j==0||j==matriz.length-1) {
-                        //Asignar D
-                        jugadores.get(0).setPiezas(new Duende());
+                        jugadores.get(0).setPiezas(new Duende(j, i));
                         matriz[i][j] = "D";
                     }else if (j==2||j==7) {
                         //Asignar A
