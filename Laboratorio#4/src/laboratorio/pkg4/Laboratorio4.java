@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.*;
 
 public class Laboratorio4 {
-
+//•○
     static Scanner sc = new Scanner(System.in);
     static String palabra, nombre, lugar, sexo;
     static int edad, op, c;
@@ -14,7 +14,7 @@ public class Laboratorio4 {
     
     public static void main(String[] args) {
         int opcion;
-        jugadores.add(new Jugador(Color.black));
+        jugadores.add(new Jugador(Color.white));
         jugadores.add(new Jugador(Color.black));
         tablero = llenar_asignar(tablero);
         print(tablero);
@@ -136,7 +136,7 @@ public class Laboratorio4 {
     public static void print(String[][] matriz){
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                System.out.print("| "+matriz[i][j]+" |");
+                System.out.print(" "+matriz[i][j]+" |");
             }
             System.out.println();
         }
@@ -171,11 +171,11 @@ public class Laboratorio4 {
                     }else{
                         matriz[i][j] = "  ";
                     }
-                }/*else if(i==0){
+                }else if(i==0){
                     if (j==0||j==matriz.length-1) {
                         pieza = new Caballero(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
-                        matriz[i][j] = " " //pieza.getFigura();
+                        matriz[i][j] = pieza.getFigura();
                     }else if (j==2||j==7) {
                         pieza = new Dragon(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
@@ -244,7 +244,7 @@ public class Laboratorio4 {
                     }else{
                         matriz[i][j] = "  ";
                     }
-                }*/else{
+                }else{
                     matriz[i][j] = "  ";
                 }
             }
