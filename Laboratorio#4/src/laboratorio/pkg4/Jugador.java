@@ -1,6 +1,7 @@
 
 package laboratorio.pkg4;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 
@@ -78,7 +79,14 @@ public class Jugador {
         this.piezas.add(piezas);
     }
 
-    
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Jugador: "+ nombre + "\n"

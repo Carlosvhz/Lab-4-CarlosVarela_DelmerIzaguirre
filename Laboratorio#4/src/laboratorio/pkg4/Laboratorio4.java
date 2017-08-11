@@ -1,15 +1,16 @@
 package laboratorio.pkg4;
 
+import java.awt.Color;
 import java.util.*;
 
 public class Laboratorio4 {
 
     static Scanner sc = new Scanner(System.in);
     static String palabra, nombre, lugar, sexo;
-    static int edad, op;
+    static int edad, op, c;
     static String [][] tablero = new String [10][10];
     static ArrayList<Jugador> jugadores = new ArrayList();
-    
+    static Color color;
     
     public static void main(String[] args) {
         int opcion;
@@ -70,6 +71,7 @@ public class Laboratorio4 {
                         System.out.println(n);
                     }
                 }
+                System.out.println();
                 break;
             case 4:
                 break;
@@ -86,6 +88,7 @@ public class Laboratorio4 {
             }
         }
     }
+    
     //Imprimir matriz
     public static void print(String[][] matriz){
         for (int i = 0; i < 10; i++) {
@@ -102,84 +105,83 @@ public class Laboratorio4 {
                 //Player 1
                 if (i==1) {
                     if (j==0||j==matriz.length-1) {
-                        //Asignar D
-                        jugadores.get(0).setPiezas(new Duende());
+                        jugadores.get(0).setPiezas(new Duende(j, i));
                         matriz[i][j] = "D";
                     }else if (j==2||j==7) {
-                        //Asignar A
+                        jugadores.get(0).setPiezas(new Arquero(j, i));
                         matriz[i][j] = "A";
                     }else if (j==3||j==6) {
-                        //Asignar D
+                        jugadores.get(0).setPiezas(new Duende(j,i));
                         matriz[i][j] = "D";
                     }else if (j==4) {
-                        //Asignar C
+                        jugadores.get(0).setPiezas(new Caballero(j, i));
                         matriz[i][j] = "C";
                     }else if(j==5){
-                        //Asignar F
+                        jugadores.get(0).setPiezas(new Dragon(j, i));
                         matriz[i][j] = "F";
                     }else{
-                        matriz[i][j] = " ";
+                        matriz[i][j] = "  ";
                     }
                 }else if(i==0){
                     if (j==0||j==matriz.length-1) {
-                        //Asignar C
+                        jugadores.get(0).setPiezas(new Caballero(j, i));
                         matriz[i][j] = "C";
                     }else if (j==2||j==7) {
-                        //Asignar F
+                        jugadores.get(0).setPiezas(new Dragon(j, i));
                         matriz[i][j] = "F";
                     }else if (j==3||j==6) {
-                        //Asignar a
+                        jugadores.get(0).setPiezas(new Arquero(j, i));
                         matriz[i][j] = "A";
                     }else if (j==4) {
-                        //Asignar R
+                        jugadores.get(0).setPiezas(new Rey(j, i));
                         matriz[i][j] = "R";
                     }else if(j==5){
-                        //Asignar M
+                        jugadores.get(0).setPiezas(new Mago(j, i));
                         matriz[i][j] = "M";
                     }else{
-                        matriz[i][j] = " ";
+                        matriz[i][j] = "  ";
                     }
                     //Segundo jugador
                 }else if (i==8){
                     if (j==0||j==matriz.length-1) {
-                        //Asignar D
+                        jugadores.get(1).setPiezas(new Duende(j,i));
                         matriz[i][j] = "D";
                     }else if (j==2||j==7) {
-                        //Asignar A
+                        jugadores.get(1).setPiezas(new Arquero(j, i));
                         matriz[i][j] = "A";
                     }else if (j==3||j==6) {
-                        //Asignar D
+                        jugadores.get(1).setPiezas(new Duende(j,i));
                         matriz[i][j] = "D";
                     }else if (j==4) {
-                        //Asignar F
+                        jugadores.get(1).setPiezas(new Dragon(j, i));
                         matriz[i][j] = "F";
                     }else if(j==5){
-                        //Asignar C
+                        jugadores.get(1).setPiezas(new Caballero(j, i));
                         matriz[i][j] = "C";
                     }else{
-                        matriz[i][j] = " ";
+                        matriz[i][j] = "  ";
                     }
                 }else if(i==9){
                     if (j==0||j==matriz.length-1) {
-                        //Asignar C
+                        jugadores.get(1).setPiezas(new Caballero(j, i));
                         matriz[i][j] = "C";
                     }else if (j==2||j==7) {
-                        //Asignar F
+                        jugadores.get(1).setPiezas(new Dragon(j, i));
                         matriz[i][j] = "F";
                     }else if (j==3||j==6) {
-                        //Asignar a
+                        jugadores.get(1).setPiezas(new Arquero(j, i));
                         matriz[i][j] = "A";
                     }else if (j==4) {
-                        //Asignar R
+                        jugadores.get(1).setPiezas(new Rey(j, i));
                         matriz[i][j] = "R";
                     }else if(j==5){
-                        //Asignar M
+                        jugadores.get(1).setPiezas(new Mago(j, i));
                         matriz[i][j] = "M";
                     }else{
-                        matriz[i][j] = " ";
+                        matriz[i][j] = "  ";
                     }
                 }else{
-                    matriz[i][j] = " ";
+                    matriz[i][j] = "  ";
                 }
             }
         }
