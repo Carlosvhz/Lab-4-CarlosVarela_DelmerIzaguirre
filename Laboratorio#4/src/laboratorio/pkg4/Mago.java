@@ -17,8 +17,8 @@ public class Mago extends Pieza {
         super();
     }
 
-    public Mago(int x, int y) {
-        super(x, y);
+    public Mago(int x, int y, Color color) {
+        super(x, y, color);
     }
     
     

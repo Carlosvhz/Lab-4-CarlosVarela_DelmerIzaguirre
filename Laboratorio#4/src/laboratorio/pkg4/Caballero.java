@@ -12,9 +12,11 @@ public class Caballero extends Pieza {
         super();
     }
 
-    public Caballero(int x, int y) {
-        super(x, y);
+    public Caballero(int x, int y, Color color) {
+        super(x, y, color);
     }
+
+   
     
     
 

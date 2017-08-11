@@ -17,10 +17,9 @@ public class Arquero extends Pieza {
         super();
     }
 
-    public Arquero(int x, int y) {
-        super(x, y);
+    public Arquero(int x, int y, Color color) {
+        super(x, y, color);
     }
-    
     
     
     @Override
