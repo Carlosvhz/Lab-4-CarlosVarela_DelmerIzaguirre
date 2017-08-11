@@ -16,6 +16,12 @@ public abstract class Pieza {
     public Pieza() {
     }
 
+    public void setPieza(int y,int x){
+        this.x = x;
+        this.y = y;
+        
+    }
+    
     public Pieza(Color color, String material) {
         this.color = color;
         this.material = material;
