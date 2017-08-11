@@ -54,6 +54,7 @@ public class Arquero extends Pieza {
             
 
         } catch (MiExcepcion e) {
+            System.out.println(e.getMessage());
         }
 
     }

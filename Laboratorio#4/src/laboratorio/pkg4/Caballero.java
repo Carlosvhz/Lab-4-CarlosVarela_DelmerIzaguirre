@@ -44,6 +44,7 @@ public class Caballero extends Pieza {
             }
             
         } catch (MiExcepcion e) {
+            System.out.println(e.getMessage());
         }
 
     }

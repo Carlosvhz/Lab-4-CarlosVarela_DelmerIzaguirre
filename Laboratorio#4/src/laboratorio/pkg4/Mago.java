@@ -55,6 +55,7 @@ public class Mago extends Pieza {
             
 
         } catch (MiExcepcion e) {
+            System.out.println(e.getMessage());
         }
 
     }
