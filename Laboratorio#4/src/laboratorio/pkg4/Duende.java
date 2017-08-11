@@ -15,7 +15,6 @@ public class Duende extends Pieza {
     @Override
     public void Movimiento(int x, int y, byte jugador) {
         boolean valido = false;
-        
         try {
             validar(x, y);
             if (jugador == 0) {

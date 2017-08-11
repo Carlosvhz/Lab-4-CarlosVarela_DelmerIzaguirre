@@ -78,15 +78,7 @@ public class Jugador {
     public void setPiezas(Pieza piezas) {
         this.piezas.add(piezas);
     }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
+    
     @Override
     public String toString() {
         return "Jugador: "+ nombre + "\n"
