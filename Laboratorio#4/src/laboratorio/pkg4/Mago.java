@@ -17,6 +17,12 @@ public class Mago extends Pieza {
         super();
     }
 
+    public Mago(int x, int y) {
+        super(x, y);
+    }
+    
+    
+
     @Override
     public void Movimiento(int x, int y, byte jugador) {
         
@@ -34,8 +40,8 @@ public class Mago extends Pieza {
             }
             int w = super.x - x;
             int z = super.y - y;
-            w = (int) Math.sqrt(Math.pow(w, 2));
-            z = (int) Math.sqrt(Math.pow(z, 2));
+            w = (int) Math.abs(w);
+            z = (int) Math.abs(z);
             
             if(z == w){
                 super.x = x;

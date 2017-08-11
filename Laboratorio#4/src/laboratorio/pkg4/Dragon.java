@@ -16,6 +16,12 @@ public class Dragon extends Pieza{
     public Dragon() {
         super();
     }
+
+    public Dragon(int x, int y) {
+        super(x, y);
+    }
+    
+    
     
     @Override
     public void Movimiento(int x, int y, byte jugador) {

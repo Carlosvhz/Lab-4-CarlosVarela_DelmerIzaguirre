@@ -16,6 +16,12 @@ public class Arquero extends Pieza {
     public Arquero() {
         super();
     }
+
+    public Arquero(int x, int y) {
+        super(x, y);
+    }
+    
+    
     
     @Override
     public void Movimiento(int x, int y, byte jugador) {

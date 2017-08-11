@@ -66,5 +66,11 @@ public abstract class Pieza {
         }
 
     }
+    
+    protected void validar2(int x,int y, String[][] tablero){
+        System.out.println("Hola");
+        
+        
+    }
 
 }
