@@ -1,4 +1,3 @@
-
 package laboratorio.pkg4;
 
 import java.util.*;
@@ -6,33 +5,34 @@ import java.util.*;
 public class Laboratorio4 {
 
     static Scanner sc = new Scanner(System.in);
-    static String palabra, nombre, lugar;
-    static int edad;
+    static String palabra, nombre, lugar, sexo;
+    static int edad, op;
     static ArrayList<Jugador> jugadores = new ArrayList();
     
     
     public static void main(String[] args) {
-        String [][] matriz = new String [10][10];
-        matriz = llenar(matriz, 0,0);
-        print(matriz);
         int opcion;
         System.out.println(" === Lab#4 ===");
         
         do {
             System.out.print("1. Ingrese Jugador\n"
                     + "2. Eliminar Jugador\n"
-                    + "3. Listar Jugador\n"
-                    + "4. Salir\n"
+                    + "3. Listar Jugadores\n"
+                    + "4. Jugar\n"
+                    + "5. Salir\n"
                     + "Ingrese opcion: ");
             opcion = sc.nextInt();
-        } while (true); 
+            menu(opcion);
+        } while (opcion>0&&opcion<5); 
     }
     
     public static void menu(int opcion){
         switch(opcion){
+            //Añadir jugadores
             case 1:
+                System.out.println("_____ Ingresar nuevo Jugador ____");
                 if (jugadores.size()>=2) {
-                    System.out.println("... Limite de jugadores alcanzado!!");
+                    System.out.println("... Limite de jugadores alcanzado!!\n");
                 }else{
                     System.out.print("Ingrese nombre: ");
                     nombre = sc.next();
@@ -42,54 +42,130 @@ public class Laboratorio4 {
                     lugar = sc.next();
                     System.out.print("Ingrese edad: ");
                     edad = sc.nextInt();
+                    System.out.print("Ingrese sexo: ");
+                    sexo = sc.next();
+                    jugadores.add(new Jugador(nombre, palabra, sexo, lugar, 0, edad));
                 }
+                System.out.println("... Jugador añadido!!\n");
                 break;
             case 2:
+                System.out.println("_____  Eliminar jugador ____");
+                if (jugadores.size()==0) {
+                    System.out.println("... No hay jugadores para eliminar!!\n");
+                }else{
+                    System.out.print("Ingrese posicion del jugador para eliminar: ");
+                    op = sc.nextInt();
+                    jugadores.remove(op);
+                }
+                System.out.println("... Jugador eliminado!!\n");
                 break;
             case 3:
+                System.out.println("_____  Listar jugadores ____");
+                break;
+            case 4:
                 break;
             default:
                 System.out.println("... Gracias por su uso!");
+                break;
         }
     }
     
     //Imprimir matriz
-    public static void print(String[][] matriz){
-        for (int i = 0; i < matriz.length; i++) {
-            System.out.println();
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.print("|"+matriz[i][j]+"|");
+    public static void print(String[][] matriz, int f, int c){
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print("| "+matriz[i][j]+" |");
             }
+            System.out.println();
         }
     }
     
-    //Llenar la matriz y asignar posicion de todas las piezas al array de piezas
-    //De cada jugador
-    public static String[][] llenar (String[][]matriz, int f, int c){
-        if (f == matriz.length-1 && c == matriz[0].length-1) {
-            //Jugador2
-            matriz[f][c]="C";
-            return matriz;
-        }else{
-            if (c==matriz[0].length-1&&f==0) {
-                //jugador 1
-                matriz[f][c] = "C";
-                return llenar(matriz, f+1,0);
-            }else if (c==matriz[0].length-1){
-                matriz[f][c] = " ";
-                return llenar(matriz, f+1,0);
-            }else if (c==0 && f ==0){
-                //Jugador 1
-                matriz[f][c] = "C";
-                return llenar(matriz, f,c+1);
-            }else if (c==4&&f==1){
-                //Jugador 1
-                matriz[f][c] = "C";
-                return llenar(matriz, f,c+1);
-            }else{
-                matriz[f][c] = " ";
-                return llenar(matriz, f, c+1);
+    public static String [][] llenar_asignar(String[][]matriz){
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                //Player 1
+                if (i==1) {
+                    if (j==0||j==matriz.length-1) {
+                        //Asignar D
+                        matriz[i][j] = "D";
+                    }else if (j==2||j==7) {
+                        //Asignar A
+                        matriz[i][j] = "A";
+                    }else if (j==3||j==6) {
+                        //Asignar D
+                        matriz[i][j] = "D";
+                    }else if (j==4) {
+                        //Asignar C
+                        matriz[i][j] = "C";
+                    }else if(j==5){
+                        //Asignar F
+                        matriz[i][j] = "F";
+                    }else{
+                        matriz[i][j] = " ";
+                    }
+                }else if(i==0){
+                    if (j==0||j==matriz.length-1) {
+                        //Asignar C
+                        matriz[i][j] = "C";
+                    }else if (j==2||j==7) {
+                        //Asignar F
+                        matriz[i][j] = "F";
+                    }else if (j==3||j==6) {
+                        //Asignar a
+                        matriz[i][j] = "A";
+                    }else if (j==4) {
+                        //Asignar R
+                        matriz[i][j] = "R";
+                    }else if(j==5){
+                        //Asignar M
+                        matriz[i][j] = "M";
+                    }else{
+                        matriz[i][j] = " ";
+                    }
+                    //Segundo jugador
+                }else if (i==8){
+                    if (j==0||j==matriz.length-1) {
+                        //Asignar D
+                        matriz[i][j] = "D";
+                    }else if (j==2||j==7) {
+                        //Asignar A
+                        matriz[i][j] = "A";
+                    }else if (j==3||j==6) {
+                        //Asignar D
+                        matriz[i][j] = "D";
+                    }else if (j==4) {
+                        //Asignar F
+                        matriz[i][j] = "F";
+                    }else if(j==5){
+                        //Asignar C
+                        matriz[i][j] = "C";
+                    }else{
+                        matriz[i][j] = " ";
+                    }
+                }else if(i==9){
+                    if (j==0||j==matriz.length-1) {
+                        //Asignar C
+                        matriz[i][j] = "C";
+                    }else if (j==2||j==7) {
+                        //Asignar F
+                        matriz[i][j] = "F";
+                    }else if (j==3||j==6) {
+                        //Asignar a
+                        matriz[i][j] = "A";
+                    }else if (j==4) {
+                        //Asignar R
+                        matriz[i][j] = "R";
+                    }else if(j==5){
+                        //Asignar M
+                        matriz[i][j] = "M";
+                    }else{
+                        matriz[i][j] = " ";
+                    }
+                }else{
+                    matriz[i][j] = " ";
+                }
             }
         }
+        return matriz;
     }
 }
