@@ -12,6 +12,9 @@ public class Laboratorio4 {
     static Color color;
     
     public static void main(String[] args) {
+        
+        System.out.println("Error >:v");
+        
         int opcion = 4;
         jugadores.add(new Jugador(Color.white));
         jugadores.add(new Jugador(Color.black));
