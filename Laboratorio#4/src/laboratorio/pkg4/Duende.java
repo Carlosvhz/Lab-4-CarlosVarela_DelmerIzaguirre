@@ -43,13 +43,8 @@ public class Duende extends Pieza {
     }
 
     @Override
-    public void Captura(int x, int y, Jugador rival) {
-        for (Pieza pz : rival.getPiezas()) {
-            if(pz.x == x && pz.y == y){
-                rival.getPiezas().remove(pz);
-            }
-        }
-        
+    public void Captura() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

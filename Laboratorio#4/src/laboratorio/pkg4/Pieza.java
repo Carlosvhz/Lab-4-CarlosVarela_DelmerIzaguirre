@@ -58,7 +58,7 @@ public abstract class Pieza {
     //Metodos
     public abstract void Movimiento(int x, int y, byte jugador, String[][] tablero);
 
-    public abstract void Captura(int x, int y, Jugador contrincante);
+    public abstract void Captura();
 
     public abstract String getFigura();
 
