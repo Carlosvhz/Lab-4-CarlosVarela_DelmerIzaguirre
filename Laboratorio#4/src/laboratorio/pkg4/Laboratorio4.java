@@ -13,13 +13,12 @@ public class Laboratorio4 {
     static Color color;
 
     public static void main(String[] args) {       
-        int opcion = 4;
-        jugadores.add(new Jugador(Color.white));
+        int opcion;
+        /*jugadores.add(new Jugador(Color.white));
         jugadores.add(new Jugador(Color.black));
         jugadores.get(0).setNombre("1"); 
         jugadores.get(1).setNombre("2");
-        tablero = llenar_asignar(tablero);
-        menu(opcion);
+        tablero = llenar_asignar(tablero);*/
         System.out.println(" === Lab#4 ===");
         do {
             System.out.print("1. Ingrese Jugador\n"
@@ -73,8 +72,8 @@ public class Laboratorio4 {
                     System.out.print("Ingrese posicion del jugador para eliminar: ");
                     op = sc.nextInt();
                     jugadores.remove(op);
+                    System.out.println("... Jugador eliminado!!\n");
                 }
-                System.out.println("... Jugador eliminado!!\n");
                 break;
             case 3:
                 System.out.println("_____  Listar jugadores ____");
@@ -101,11 +100,11 @@ public class Laboratorio4 {
     }
 
      public static void jugar(){
+        tablero = llenar_asignar(tablero);
         int x, y;
         int cont = 0;
         while (true) {     
             print(tablero);
-            
             if (cont%2==0) {
                 System.out.print("--- Turno jugador: "+jugadores.get(0).getNombre()+" ---\n"
                         + "... Posicion de la pieza\n"
