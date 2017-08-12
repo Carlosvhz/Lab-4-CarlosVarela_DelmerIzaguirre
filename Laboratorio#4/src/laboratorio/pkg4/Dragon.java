@@ -22,7 +22,7 @@ public class Dragon extends Pieza {
     }
 
     @Override
-    public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
+    public void Movimiento(int x, int y, byte jugador, String[][] tablero, Jugador rival) {
         boolean valido = false;
         try {
             validar(x, y, tablero);
@@ -42,6 +42,7 @@ public class Dragon extends Pieza {
             } else {
                 tablero[y][x] = tablero[this.y][this.x];
                 tablero[this.y][this.x] = "  ";
+                Captura(x,y,rival);
             }
 
         } catch (MiExcepcion e) {
@@ -51,8 +52,13 @@ public class Dragon extends Pieza {
     }
 
     @Override
-    public void Captura() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Captura(int x, int y , Jugador rival) {
+        for (Pieza pz : rival.getPiezas()) {
+            if(pz.x == x && pz.y == y){
+                rival.getPiezas().remove(pz);
+            }
+        }
+       
     }
 
     @Override

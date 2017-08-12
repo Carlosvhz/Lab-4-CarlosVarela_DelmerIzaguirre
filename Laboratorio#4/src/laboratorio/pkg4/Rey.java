@@ -23,15 +23,20 @@ public class Rey extends Pieza {
     
 
     @Override
-    public void Movimiento(int x, int y, byte jugador, String[][] tablero) {
+    public void Movimiento(int x, int y, byte jugador, String[][] tablero, Jugador rival) {
         
         System.out.println("El rey no se puede mover");
 
     }
 
-    @Override
-    public void Captura() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   @Override
+    public void Captura(int x, int y , Jugador rival) {
+        for (Pieza pz : rival.getPiezas()) {
+            if(pz.x == x && pz.y == y){
+                rival.getPiezas().remove(pz);
+            }
+        }
+       
     }
 
     @Override

@@ -143,7 +143,7 @@ public class Laboratorio4 {
                             x = sc.nextInt();
                             System.out.print("- Ingrese nueva posicion y: ");
                             y = sc.nextInt();
-                            pz.Movimiento(x, y, (byte)0, tablero);
+                            pz.Movimiento(x, y, (byte)0, tablero, jugadores.get(1));
                             break;
                         }
                     }
@@ -169,7 +169,7 @@ public class Laboratorio4 {
                             x = sc.nextInt();
                             System.out.print("- Ingrese nueva posicion y: ");
                             y = sc.nextInt();
-                            pz.Movimiento(x, y, (byte)1, tablero);
+                            pz.Movimiento(x, y, (byte)1, tablero, jugadores.get(1));
                             break;
                         }
                     }
