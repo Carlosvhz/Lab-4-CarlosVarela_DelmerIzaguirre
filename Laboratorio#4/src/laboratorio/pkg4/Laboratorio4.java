@@ -4,21 +4,21 @@ import java.awt.Color;
 import java.util.*;
 
 public class Laboratorio4 {
+
     static Scanner sc = new Scanner(System.in);
     static String palabra, nombre, lugar, sexo;
     static int edad, op, c;
-    static String [][] tablero = new String [10][10];
+    static String[][] tablero = new String[10][10];
     static ArrayList<Jugador> jugadores = new ArrayList();
     static Color color;
+
     
     public static void main(String[] args) {
-        
-      
-        
+ 
         int opcion = 4;
         jugadores.add(new Jugador(Color.white));
         jugadores.add(new Jugador(Color.black));
-        jugadores.get(0).setNombre("1");
+        jugadores.get(0).setNombre("1"); 
         jugadores.get(1).setNombre("2");
         tablero = llenar_asignar(tablero);
         menu(opcion);
@@ -32,17 +32,17 @@ public class Laboratorio4 {
                     + "Ingrese opcion: ");
             opcion = sc.nextInt();
             menu(opcion);
-        } while (opcion>0&&opcion<5); 
+        } while (opcion > 0 && opcion < 5);
     }
-    
-    public static void menu(int opcion){
-        switch(opcion){
+
+    public static void menu(int opcion) {
+        switch (opcion) {
             //Añadir jugadores
             case 1:
                 System.out.println("_____ Ingresar nuevo Jugador ____");
-                if (jugadores.size()>=2) {
+                if (jugadores.size() >= 2) {
                     System.out.println("... Limite de jugadores alcanzado!!\n");
-                }else{
+                } else {
                     System.out.print("Ingrese nombre: ");
                     nombre = sc.next();
                     System.out.print("Ingrese nombre de usuario: ");
@@ -58,9 +58,9 @@ public class Laboratorio4 {
                             + "2. Negro\n"
                             + "Ingrese: ");
                     c = sc.nextInt();
-                    if (c==1) {
+                    if (c == 1) {
                         color = Color.white;
-                    }else{
+                    } else {
                         color = Color.black;
                     }
                     jugadores.add(new Jugador(nombre, palabra, sexo, lugar, 0, edad, color));
@@ -69,9 +69,9 @@ public class Laboratorio4 {
                 break;
             case 2:
                 System.out.println("_____  Eliminar jugador ____");
-                if (jugadores.size()==0) {
+                if (jugadores.size() == 0) {
                     System.out.println("... No hay jugadores para eliminar!!\n");
-                }else{
+                } else {
                     System.out.print("Ingrese posicion del jugador para eliminar: ");
                     op = sc.nextInt();
                     jugadores.remove(op);
@@ -80,9 +80,9 @@ public class Laboratorio4 {
                 break;
             case 3:
                 System.out.println("_____  Listar jugadores ____");
-                if (jugadores.size()==0) {
+                if (jugadores.size() == 0) {
                     System.out.println("... No hay jugadores para listar!!\n");
-                }else{
+                } else {
                     for (Jugador n : jugadores) {
                         System.out.println(n);
                     }
@@ -90,9 +90,9 @@ public class Laboratorio4 {
                 System.out.println();
                 break;
             case 4:
-                if (jugadores.size()==2) {
+                if (jugadores.size() == 2) {
                     jugar();
-                }else{
+                } else {
                     System.out.println("... No hay jugadores sifucientes para jugar!!!\n ");
                 }
                 break;
@@ -101,14 +101,12 @@ public class Laboratorio4 {
                 break;
         }
     }
-    
-    public static void jugar(){
+
+     public static void jugar(){
         int x, y;
         int cont = 0;
         while (true) {     
-            System.out.println("====================================================");
             print(tablero);
-            System.out.println("====================================================");
             
             if (cont%2==0) {
                 System.out.print("--- Turno jugador: "+jugadores.get(0).getNombre()+" ---\n"
@@ -166,128 +164,131 @@ public class Laboratorio4 {
             cont++;
         }
     }
-    
-    public static void modificar(){
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                
-            }
-        }
-    }
-    
     //Imprimir matriz
-    public static void print(String[][] matriz){
+
+    public static void print(String[][] matriz) {
+        int cont = 0;
+        System.out.println("====================================================");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("   " + i + ".");
+        }
+        System.out.println();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                System.out.print(" "+matriz[i][j]+" |");
+                if (j == 0) {
+                    System.out.print(cont + ".- ");
+                }
+                System.out.print(" " + matriz[i][j] + " |");
             }
             System.out.println();
+            cont++;
         }
+        System.out.println("====================================================");
     }
-    
-    public static String [][] llenar_asignar(String[][]matriz){
+
+    public static String[][] llenar_asignar(String[][] matriz) {
         Pieza pieza;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 //Player 1
-                if (i==1) {
-                    if (j==0||j==matriz.length-1) {
+                if (i == 1) {
+                    if (j == 0 || j == matriz.length - 1) {
                         pieza = new Duende(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==2||j==7) {
+                    } else if (j == 2 || j == 7) {
                         pieza = new Arquero(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==3||j==6) {
-                        pieza = new Duende(j,i, jugadores.get(0).getColor());
+                    } else if (j == 3 || j == 6) {
+                        pieza = new Duende(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==4) {
-                        pieza =new Caballero(j, i, jugadores.get(0).getColor());
-                        jugadores.get(0).setPiezas(pieza);
-                        matriz[i][j] = pieza.getFigura();
-                    }else if(j==5){
-                        pieza = new Dragon(j, i, jugadores.get(0).getColor());
-                        jugadores.get(0).setPiezas(pieza);
-                        matriz[i][j] = pieza.getFigura();
-                    }else{
-                        matriz[i][j] = "  ";
-                    }
-                }else if(i==0){
-                    if (j==0||j==matriz.length-1) {
+                    } else if (j == 4) {
                         pieza = new Caballero(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==2||j==7) {
+                    } else if (j == 5) {
                         pieza = new Dragon(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==3||j==6) {
+                    } else {
+                        matriz[i][j] = "  ";
+                    }
+                } else if (i == 0) {
+                    if (j == 0 || j == matriz.length - 1) {
+                        pieza = new Caballero(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
+                    } else if (j == 2 || j == 7) {
+                        pieza = new Dragon(j, i, jugadores.get(0).getColor());
+                        jugadores.get(0).setPiezas(pieza);
+                        matriz[i][j] = pieza.getFigura();
+                    } else if (j == 3 || j == 6) {
                         pieza = new Arquero(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==4) {
+                    } else if (j == 4) {
                         pieza = new Rey(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if(j==5){
+                    } else if (j == 5) {
                         pieza = new Mago(j, i, jugadores.get(0).getColor());
                         jugadores.get(0).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else{
+                    } else {
                         matriz[i][j] = "  ";
                     }
                     //Segundo jugador
-                }else if (i==8){
-                    if (j==0||j==matriz.length-1) {
-                        pieza = new Duende(j,i, jugadores.get(1).getColor());
+                } else if (i == 8) {
+                    if (j == 0 || j == matriz.length - 1) {
+                        pieza = new Duende(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
-                        matriz[i][j]= pieza.getFigura();
-                    }else if (j==2||j==7) {
+                        matriz[i][j] = pieza.getFigura();
+                    } else if (j == 2 || j == 7) {
                         pieza = new Arquero(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==3||j==6) {
-                        pieza = new Duende(j,i, jugadores.get(1).getColor());
+                    } else if (j == 3 || j == 6) {
+                        pieza = new Duende(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==4) {
+                    } else if (j == 4) {
                         pieza = new Dragon(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if(j==5){
+                    } else if (j == 5) {
                         pieza = new Caballero(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else{
+                    } else {
                         matriz[i][j] = "  ";
                     }
-                }else if(i==9){
-                    if (j==0||j==matriz.length-1) {
+                } else if (i == 9) {
+                    if (j == 0 || j == matriz.length - 1) {
                         pieza = new Caballero(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==2||j==7) {
+                    } else if (j == 2 || j == 7) {
                         pieza = new Dragon(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==3||j==6) {
+                    } else if (j == 3 || j == 6) {
                         pieza = new Arquero(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if (j==4) {
+                    } else if (j == 4) {
                         pieza = new Rey(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else if(j==5){
+                    } else if (j == 5) {
                         pieza = new Mago(j, i, jugadores.get(1).getColor());
                         jugadores.get(1).setPiezas(pieza);
                         matriz[i][j] = pieza.getFigura();
-                    }else{
+                    } else {
                         matriz[i][j] = "  ";
                     }
-                }else{
+                } else {
                     matriz[i][j] = "  ";
                 }
             }
