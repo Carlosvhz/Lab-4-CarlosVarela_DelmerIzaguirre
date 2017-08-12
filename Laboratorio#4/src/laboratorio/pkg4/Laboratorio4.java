@@ -102,7 +102,6 @@ public class Laboratorio4 {
 
     public static void jugar() {
         int x, y;
-
         while (true) {
             print(tablero);
             int cont = 1;
