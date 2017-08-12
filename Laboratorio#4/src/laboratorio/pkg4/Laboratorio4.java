@@ -61,6 +61,22 @@ public class Laboratorio4 {
                         color = Color.black;
                     }
                     jugadores.add(new Jugador(nombre, palabra, sexo, lugar, 0, edad, color));
+                    if (jugadores.size()==2) {
+                        while (jugadores.get(0).getColor().equals(jugadores.get(1).getColor())) {
+                            System.out.print("... El color ingresado ya se ha utilizado\n"
+                                    + "Ingrese otro diferente\n"
+                                    + "1. Blanco\n"
+                                    + "2. Negro\n"
+                                    + "Ingrese: ");
+                            c = sc.nextInt();
+                            if (c == 1) {
+                                color = Color.white;
+                            } else {
+                                color = Color.black;
+                            }
+                            jugadores.get(1).setColor(color);
+                        }
+                    }
                 }
                 System.out.println("... Jugador añadido!!\n");
                 break;
@@ -100,6 +116,7 @@ public class Laboratorio4 {
     }
 
      public static void jugar(){
+        System.out.println("_____  Eliminar jugador ____");
         tablero = llenar_asignar(tablero);
         int x, y;
         int cont = 0;
