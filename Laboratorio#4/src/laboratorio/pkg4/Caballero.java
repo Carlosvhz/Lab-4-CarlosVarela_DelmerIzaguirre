@@ -37,9 +37,10 @@ public class Caballero extends Pieza {
             }
             if (!valido) {
                 System.out.println("Movimiento no valido");
+            } else {
+                tablero[y][x] = tablero[this.y][this.x];
+                tablero[this.y][this.x] = "  ";
             }
-            tablero[y][x] = tablero[this.y][this.x];
-            tablero[this.y][this.x] = "  ";
 
         } catch (MiExcepcion e) {
             System.out.println(e.getMessage());

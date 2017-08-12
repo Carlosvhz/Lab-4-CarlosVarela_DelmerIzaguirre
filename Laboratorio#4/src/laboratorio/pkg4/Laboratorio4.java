@@ -19,8 +19,8 @@ public class Laboratorio4 {
         jugadores.get(0).setNombre("1"); 
         jugadores.get(1).setNombre("2");
         tablero = llenar_asignar(tablero);*/
-        System.out.println(" === Lab#4 ===");
         do {
+            System.out.println(" === Lab#4 ===");
             System.out.print("1. Ingrese Jugador\n"
                     + "2. Eliminar Jugador\n"
                     + "3. Listar Jugadores\n"
